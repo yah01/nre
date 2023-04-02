@@ -40,11 +40,11 @@ func main() {
 
 			messages := []openai.ChatCompletionMessage{
 				{Role: "system", Content: "You are a helpful programmer assistant, the user describe a pattern and you answer with a regex matching that pattern"},
-				{Role: "system", Content: "Output the regex expression only except the user requires you to output the explanation"},
+				{Role: "system", Content: "Output the regex expression only, no any explanation, unless the user requires you to output the explanation"},
 				{Role: "user", Content: query},
 			}
 			if ctx.Bool("detail") {
-				messages = append(messages, openai.ChatCompletionMessage{Role: "user", Content: "answer with function signature and description of parameters"})
+				messages = append(messages, openai.ChatCompletionMessage{Role: "user", Content: "with explanation"})
 			}
 
 			client := openai.NewClient(ctx.String("api"))
